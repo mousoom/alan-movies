@@ -5,7 +5,7 @@ import useStyles from './style.js';
 import Tilt from 'react-tilt';
 
 
-const MoviesCards = ({list}) => {
+const MoviesCards = ({list,activeMovies}) => {
 
     const classes = useStyles();
 
@@ -30,7 +30,7 @@ const MoviesCards = ({list}) => {
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>         
                 {list.map((list, i) => (
                     <Grid item xs={12} sm={6} md={4} lg={3} style={{display:'flex'}}>
-                        <Card list={list} i={i}/>
+                        <Card list={list} i={i} activeMovies={activeMovies}/>
                     </Grid>
                 ))}
             </Grid>

@@ -10,6 +10,7 @@ import Particles from 'react-particles-js';
 const alanKey = '5c0dde699f7be267f2b24fa877066ad02e956eca572e1d8b807a3e2338fdd0dc/stage';
 const App = () => {
 	const [movies,setMovies] = useState ([]);
+	const[activeMovies,setActiveMovies] = useState(0);
 
 	useEffect(() => {
 		alanBtn({
@@ -17,7 +18,9 @@ const App = () => {
 			onCommand: ({command, list}) => {
 				if(command === 'showMovie'){
 					setMovies(list );
-					console.log(list);
+					setActiveMovies(-1);
+				}else if(command === 'highlight'){
+					setActiveMovies((prevActiveMovies) => prevActiveMovies + 1);
 				}
 			}
 		})
@@ -150,7 +153,7 @@ const App = () => {
 				</div>
 			</Tilt>
 			
-			<Moviescard list={movies}/>
+			<Moviescard list={movies} activeMovies={activeMovies}/>
 		</div>
 		</div>
 	)
