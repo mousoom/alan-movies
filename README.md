@@ -33,10 +33,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ## Alan-Ai and MoviesDB
 
 **To know about Alan-Ai:<br/>
-click here [Alan-app](https://alan.app/) and go through the [documentation](https://alan.app/docs/usage/getting-started).**
+Click here [Alan-app](https://alan.app/) and go through the [documentation](https://alan.app/docs/usage/getting-started).**
 
 **To know about TheMoviesDB:<br/>
-click [signup](https://www.themoviedb.org/signup).**
+Click [Signup](https://www.themoviedb.org/signup).**
 
 
 
