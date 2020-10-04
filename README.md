@@ -4,6 +4,14 @@ LIVE APP - https://alan-movies.netlify.app/ <br/>
 **Firefox is recommended to see the live app on mobile** <br/>
 TO KNOW MORE - https://www.youtube.com/watch?v=DghWX45C0-o&t=6s
 
+# Commands:
+**Hi / Hello**<br/>
+**What are the best movies today? / What are the top movies now?**<br/>
+**Yes / No**<br/>
+**Go back**<br/>
+
+
+
 
 ## Solution Proposal:
 
