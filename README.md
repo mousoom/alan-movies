@@ -15,7 +15,6 @@ As for a visually impaired person, he/she may not be able to go through his/her 
 * News, etc.
 
 ## Problem solved:
-As per the solution proposed, the problem that are solved-
 * Auto scroll
 * Go back 
 * Know the updates of Movies.
