@@ -7,7 +7,7 @@ TO KNOW MORE - https://www.youtube.com/watch?v=DghWX45C0-o&t=6s
 
 ## Solution Proposal:
 
-As for a visually impaired person, he/she may not be able to go through his/her mobile to know about news, weather or movie update, etc. Even for the person who doesnt want to type and search of a term, this project is useful. This project may help to start, know the updates, auto scroll , go back and stop just by using their voice commands. The AI used here is to give about the Top Movies updates. This AI can even be used for other uses like:
+As for a visually impaired person, he/she may not be able to go through his/her mobile to know about news, weather or movie update, etc. Even for the person who doesnt want to type and search of a term, this project is useful. This project may help to start, know the updates, auto scroll , go back and stop just by using their voice commands. The AI used here is to give 'the Top Movies' updates. This AI can even be used for other uses like:
 * Translation, 
 * Search through voice, 
 * Know updates on sports, 
