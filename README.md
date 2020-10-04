@@ -1,7 +1,7 @@
 <h1 align="center" >ALAN-MOVIES</h1>
 
 LIVE APP - https://alan-movies.netlify.app/ <br/>
-<!--Firefox is recommended to see the live app on mobile--><br/>
+// Firefox is recommended to see the live app on mobile<br/>
 TO KNOW MORE - https://www.youtube.com/watch?v=DghWX45C0-o&t=6s
 
 # Commands:
