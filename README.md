@@ -24,7 +24,7 @@ As for a visually impaired person, he/she may not be able to go through his/her 
 
 ## Tech Stack used:
 * React- The framework used.
-* Material-ui - For stylig the components, grid, etc.
+* Material-ui - For styling the components, grid, etc.
 * ParticleJs - For get the particle floating background.
 * React-tilt- To get the tilt effect on the landing page.
 * Alan-Ai - The api used for voice assistant and command.
