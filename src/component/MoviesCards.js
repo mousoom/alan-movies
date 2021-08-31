@@ -23,6 +23,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const MoviesCards = ({ list, activeMovies }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const [size, setSize] = React.useState("");
+  const [size1, setSize1] = React.useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -32,20 +35,46 @@ const MoviesCards = ({ list, activeMovies }) => {
     setOpen(false);
   };
 
-  const [width, setWidth] = React.useState(window.innerWidth);
   useEffect(() => {
     const handleWindowResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleWindowResize);
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
+
   console.log(width);
+
   let view = "";
-  if (width < 1024) {
-    view = "mobile";
-  } else {
+  if (width > 700) {
     view = "laptop";
+  } else if (width < 700 && width > 450) {
+    view = "tablet";
+  } else if (width < 450) {
+    view = "mobile";
   }
+
   console.log(view);
+  function handleResize() {
+    if (view === "mobile") {
+      setSize('4rem');
+      setSize1('1rem');
+    } else if (view === "tablet") {
+      setSize('5rem');
+      setSize1('1.5rem');
+    }else if (view === "laptop") {
+      setSize('8rem');
+      setSize1('2rem');
+    }
+  }
+  useEffect(() => {
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [view]);
+
   if (!list.length) {
     return (
       <div className={classes.main}>
@@ -57,42 +86,89 @@ const MoviesCards = ({ list, activeMovies }) => {
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
-          <DialogTitle id="alert-dialog-slide-title" style={{textAlign:'center',fontWeight:'700'}}>COMMANDS</DialogTitle>
+          <DialogTitle
+            id="alert-dialog-slide-title"
+            style={{ textAlign: "center", fontWeight: "700" }}
+          >
+            COMMANDS
+          </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              <div style={{display:'flex',justifyContent:'center',flexWrap:'wrap'}}>
-
-              <Chip
-                size="medium"
-                avatar={<Avatar style={{backgroundColor:'#fff',color:'#00ab55'}}>W</Avatar>}
-                label="What are the best movies today?"
-                clickable
-                style={{margin:'5px',backgroundColor:'#00ab55',color:'#fff'}}
-                
-              />
-              <Chip
-                size="medium"
-                avatar={<Avatar style={{backgroundColor:'#fff',color:'#7635dc'}}>T</Avatar>}
-                label="Tell me about {movie_name}"
-                clickable
-                style={{margin:'5px', backgroundColor:"#7635dc",color:'#fff'}}
-              />
-              <Chip
-                size="medium"
-                avatar={<Avatar style={{backgroundColor:'#fff',color:'#1ccaff'}}>P</Avatar>}
-                label="Play trailer for {movie_name}"
-                clickable
-           
-                style={{margin:'5px',backgroundColor:'#1ccaff',color:'#fff'}}
-              />
-               <Chip
-                size="medium"
-                avatar={<Avatar style={{backgroundColor:'#fff',color:'#fda92d'}}>O</Avatar>}
-                label="Open movie number {movie_no.}"
-                clickable
-                
-                style={{margin:'5px',backgroundColor:'#fda92d',color:'#fff'}}
-              />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexWrap: "wrap",
+                }}
+              >
+                <Chip
+                  size="medium"
+                  avatar={
+                    <Avatar
+                      style={{ backgroundColor: "#fff", color: "#00ab55" }}
+                    >
+                      W
+                    </Avatar>
+                  }
+                  label="What are the best movies today?"
+                  clickable
+                  style={{
+                    margin: "5px",
+                    backgroundColor: "#00ab55",
+                    color: "#fff",
+                  }}
+                />
+                <Chip
+                  size="medium"
+                  avatar={
+                    <Avatar
+                      style={{ backgroundColor: "#fff", color: "#7635dc" }}
+                    >
+                      T
+                    </Avatar>
+                  }
+                  label="Tell me about {movie_name}"
+                  clickable
+                  style={{
+                    margin: "5px",
+                    backgroundColor: "#7635dc",
+                    color: "#fff",
+                  }}
+                />
+                <Chip
+                  size="medium"
+                  avatar={
+                    <Avatar
+                      style={{ backgroundColor: "#fff", color: "#1ccaff" }}
+                    >
+                      P
+                    </Avatar>
+                  }
+                  label="Play trailer for {movie_name}"
+                  clickable
+                  style={{
+                    margin: "5px",
+                    backgroundColor: "#1ccaff",
+                    color: "#fff",
+                  }}
+                />
+                <Chip
+                  size="medium"
+                  avatar={
+                    <Avatar
+                      style={{ backgroundColor: "#fff", color: "#fda92d" }}
+                    >
+                      O
+                    </Avatar>
+                  }
+                  label="Open movie number {movie_no.}"
+                  clickable
+                  style={{
+                    margin: "5px",
+                    backgroundColor: "#fda92d",
+                    color: "#fff",
+                  }}
+                />
               </div>
             </DialogContentText>
           </DialogContent>
@@ -114,12 +190,13 @@ const MoviesCards = ({ list, activeMovies }) => {
           </div>
 
           <div>
+            {size && 
             <span
               className={classes.discover}
               style={{
                 display: "inline",
                 fontWeight: "500",
-                fontSize: "7rem",
+                fontSize: size,
                 color: "transparent",
                 letterSpacing: "3px",
                 backgroundImage:
@@ -129,11 +206,13 @@ const MoviesCards = ({ list, activeMovies }) => {
             >
               Discover.
             </span>
+  }
           </div>
+          {size1 && 
           <span
             style={{
               color: "white",
-              fontSize: "1.5rem",
+              fontSize: size1,
               fontWeight: "400",
               letterSpacing: "10px",
               marginTop: "-30px",
@@ -142,6 +221,7 @@ const MoviesCards = ({ list, activeMovies }) => {
           >
             The Best Movies
           </span>
+  }
           <div className={classes.brands}>
             <div className={classes.brands1}>
               <img src={Alan} width="70px" alt="" />

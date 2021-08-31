@@ -36,7 +36,7 @@ intent(`What are the (top|best|most popular) movies (now|today|)?`, p => {
 			command: "showMovie",
 			list: savedMovies.results
 		})
-    p.play(`Here are the top 10 movies.`);
+    p.play(`Here are the top 20 movies.`);
     p.play('Would you like me to read the movie titles?');
     p.then(confirmation);
     
@@ -62,7 +62,7 @@ intent(`play trailer for $(MOVIE p:videos)`, p => {
 
 const confirmation = context(() =>{
     intent('yes',async(p) =>{
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 20; i++) {
             p.play({command: 'highlight', list: savedMovies.results[i]});
             p.play(`${savedMovies.results[i].title}`)
 	}  
@@ -73,5 +73,5 @@ const confirmation = context(() =>{
 })
 intent('go back', (p) => {
     p.play('Okay, going back...');
-    p.play({command: 'showMovie', list:[], video:[]})
+    p.play({command: 'showMovie', list:[]})
 })

@@ -32,11 +32,7 @@ const App = () => {
       key: alanKey,
       onCommand: ({ command, list, number, video }) => {
         if (command === "showMovie") {
-          var array = [];
-          for(let i = 0; i < 10; i++){
-            array.push(list[i])
-          }
-          setMovies(array);
+          setMovies(list);
           setActiveMovies(-1);
         } else if (command === "highlight") {
           setActiveMovies((prevActiveMovies) => prevActiveMovies + 1);
