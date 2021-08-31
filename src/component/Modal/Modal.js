@@ -31,20 +31,14 @@ const Modal = ({ handleClose, show, movieKey,playing,stopPlaying }) => {
     setUri(null)
   }
   return (
-    <div className={showHideClassName}>
+    <div className={showHideClassName} onClick={close}>
       <div className="modal-main">
-        <BiPlus
-          style={{ color: "#777", height: "30px", width: "30px" }}
-          size="sm"
-          className="cross"
-          onClick={close}
-        />
         <ReactPlayer
           url= {uri}
           className="react-player"
           playing={playing}
           width="100%"
-          height="90%"
+          height="100%"
           controls={true}
         />
       </div>
