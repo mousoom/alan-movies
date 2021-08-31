@@ -76,7 +76,8 @@ const MoviesCards = ({ list, activeMovies }) => {
 
   if (!list.length) {
     return (
-      <div className="main">
+      <div className="main-container">
+        <div className="content">
         <Dialog
           open={open}
           TransitionComponent={Transition}
@@ -172,7 +173,6 @@ const MoviesCards = ({ list, activeMovies }) => {
             </DialogContentText>
           </DialogContent>
         </Dialog>
-        <div className="content">
           <div
             style={{
               display: "flex",
@@ -249,10 +249,10 @@ const MoviesCards = ({ list, activeMovies }) => {
 
   return (
     <Grow in>
-      <Grid className="container" container alignItems="stretch" spacing={3}>
+      <Grid className="container" container>
         {list.map((list, i) => (
           <Grid item xs={12} sm={6} md={4} lg={3} style={{ display: "flex" }}>
-            <Card list={list} i={i} activeMovies={activeMovies} />
+            <Card list={list} i={i} activeMovies={activeMovies}/>
           </Grid>
         ))}
       </Grid>
