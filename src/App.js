@@ -1,162 +1,138 @@
-import React, {useState, useEffect} from 'react';
-import './App.css';
-import alanBtn from '@alan-ai/alan-sdk-web';
-import Moviescard from './component/MoviesCards';
-import Tilt from 'react-tilt';
-import Particles from 'react-particles-js';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import alanBtn from "@alan-ai/alan-sdk-web";
+import Moviescard from "./component/MoviesCards";
+import wordsToNumbers from "words-to-numbers";
+import Modal from "./component/Modal/Modal";
 
-
-
-const alanKey = '5c0dde699f7be267f2b24fa877066ad02e956eca572e1d8b807a3e2338fdd0dc/stage';
+const alanKey =
+  "5c0dde699f7be267f2b24fa877066ad02e956eca572e1d8b807a3e2338fdd0dc/stage";
 const App = () => {
-	const [movies,setMovies] = useState ([]);
-	const[activeMovies,setActiveMovies] = useState(0);
+  const [movies, setMovies] = useState([]);
+  const [activeMovies, setActiveMovies] = useState(0);
+  const [videos, setVideos] = useState([]);
+  const [videoKey, setVideoKey] = useState("");
+  const [isOpen, setOpen] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  const showModal = () => {
+    setOpen(true);
+  };
+  const hideModal = () => {
+    setOpen(false);
+  };
+  const isPlaying = () => {
+    setPlaying(true);
+  };
+  const notPlaying = () => {
+    setPlaying(false);
+  };
 
-	useEffect(() => {
-		alanBtn({
-			key:alanKey,
-			onCommand: ({command, list}) => {
-				if(command === 'showMovie'){
-					setMovies(list );
-					setActiveMovies(-1);
-				}else if(command === 'highlight'){
-					setActiveMovies((prevActiveMovies) => prevActiveMovies + 1);
-				}
-			}
-		})
-	}, [])
+  useEffect(() => {
+    alanBtn({
+      key: alanKey,
+      onCommand: ({ command, list, number, video }) => {
+        if (command === "showMovie") {
+          var array = [];
+          for(let i = 0; i < 10; i++){
+            array.push(list[i])
+          }
+          setMovies(array);
+          setActiveMovies(-1);
+        } else if (command === "highlight") {
+          setActiveMovies((prevActiveMovies) => prevActiveMovies + 1);
+        } else if (command === "open") {
+          const parsedNumber =
+            number.length > 2
+              ? wordsToNumbers(number, { fuzzy: true })
+              : number;
+          const article = list[parsedNumber - 1];
 
+          if (parsedNumber > list.length) {
+            alanBtn().playText("Please try that again...");
+          } else if (article) {
+            window.open(
+              "https://www.themoviedb.org/movie/" + article.id,
+              "_blank"
+            );
+            alanBtn().playText("Opening...");
+          } else {
+            alanBtn().playText("Please try that again...");
+          }
+        } else if (command === "play") {
+          console.log(video);
+          (async () => {
+            try {
+              const response = await fetch(
+                "https://api.themoviedb.org/3/movie/" +
+                  video.id +
+                  "/videos?api_key=b6d1627d45cef30c68b54c63da1c3226&language=en-US"
+              );
+              let jsonData = await response.json();
+              console.log(jsonData.results.length);
 
+              if (jsonData.results.length <= 0) {
+                console.log("bye");
+                alanBtn().playText(
+                  "Sorry no trailer available for " + video.original_title
+                );
+              } else {
+                console.log("data available");
+                setVideos(jsonData);
+                setOpen(true);
+                setPlaying(true);
+                alanBtn().playText(
+                  "Playing trailer for " + video.original_title
+                );
+              }
+              //   if (jsonData.results !== 0) {
+              // 	// setVideos(jsonData);
+              // 	console.log("data available");
+              // 	alanBtn().playText(
+              // 	  "Playing trailer for" + video.original_title
+              // 	);
+              // 	// setOpen(true);
+              // 	// setPlaying(true);
+              //   } else {
+              // 	console.log("bye");
+              // 	alanBtn().playText(
+              // 	  "Sorry np trailer available for" + video.original_title
+              // 	);
+              //   }
+            } catch (e) {
+              // Some fetch error
+              console.log(e);
+            }
+          })();
+          // }
+        }
+      },
+    });
+  }, []);
+  useEffect(() => {
+    if (videos && videos.results) {
+      console.log(videos.results[0]);
+      setVideoKey(videos.results[0].key);
+    }
+  }, [videos, videos.results]);
+  console.log(movies)
+  return (
+    <div>
+      <div className="main">
+        {videos && (
+          <Modal
+            show={isOpen}
+            handleClose={hideModal}
+            movieKey={videoKey}
+            playing={playing}
+            stopPlaying={notPlaying}
+          >
+            <p>Modal</p>
+          </Modal>
+        )}
+        <Moviescard list={movies} activeMovies={activeMovies} />
+      </div>
+    </div>
+  );
+};
 
-	return (
-		<div>
-		<Particles className="particles"
-		params={{
-			fpsLimit: 60,
-			particles: {
-			  number: {
-				value: 80,
-				density: {
-				  enable: true,
-				  value_area: 800
-				}
-			  },
-			  color: {
-				value: ["#00FF00", "#00BFFF"]
-			  },
-			  shape: {
-				type: ["circle"],
-				stroke: {
-				  width: 0,
-				  color: "#fff"
-				},
-				polygon: {
-				  nb_sides: 5
-				},
-				image: {
-				  src: "https://cdn.freebiesupply.com/logos/large/2x/slack-logo-icon.png",
-				  width: 100,
-				  height: 100
-				}
-			  },
-			  opacity: {
-				value: 1,
-				random: false,
-				anim: {
-				  enable: false,
-				  speed: 1,
-				  opacity_min: 0.1,
-				  sync: false
-				}
-			  },
-			  size: {
-				value: 8,
-				random: true,
-				anim: {
-				  enable: false,
-				  speed: 10,
-				  size_min: 10,
-				  sync: false
-				}
-			  },
-			  line_linked: {
-				enable: true,
-				distance: 150,
-				color: "#444",
-				opacity: 0.4,
-				width: 1
-			  },
-			  move: {
-				enable: true,
-				speed: 5,
-				direction: "none",
-				random: false,
-				straight: false,
-				out_mode: "out",
-				bounce: false,
-				attract: {
-				  enable: false,
-				  rotateX: 600,
-				  rotateY: 1200
-				}
-			  }
-			},
-			interactivity: {
-			  detect_on: "canvas",
-			  events: {
-				onhover: {
-				  enable: true,
-				  mode: "grab"
-				},
-				onclick: {
-				  enable: true,
-				  mode: "push"
-				},
-				resize: true
-			  },
-			  modes: {
-				grab: {
-				  distance: 140,
-				  line_linked: {
-					opacity: 1
-				  }
-				},
-				bubble: {
-				  distance: 400,
-				  size: 40,
-				  duration: 2,
-				  opacity: 8,
-				  speed: 3
-				},
-				repulse: {
-				  distance: 200,
-				  duration: 0.4
-				},
-				push: {
-				  particles_nb: 4
-				},
-				remove: {
-				  particles_nb: 2
-				}
-			  }
-			},
-			retina_detect: true
-		  }}
-	  />
-		<div className="main">
-			<Tilt className="Tilt" options={{ max : 20 }} style={{ height: 110, width: 250}} >
-                <div className="Tilt-inner">
-					<img className="logo_main
-					" src="https://www.programmableweb.com/sites/default/files/styles/facebook_scale_width_200/public/the-movie-db-api.png?itok=7BBMG08l" alt="logo2"/>
-					<img className="logo_main
-					" src="https://alan.app/voice/images/branding_page/icon/color/alan-logo-icon-color.png" alt="logo1"/>
-				</div>
-			</Tilt>
-			
-			<Moviescard list={movies} activeMovies={activeMovies}/>
-		</div>
-		</div>
-	)
-}
-
-export default App
+export default App;
