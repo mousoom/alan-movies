@@ -177,7 +177,7 @@ const MoviesCards = ({ list, activeMovies }) => {
             style={{
               display: "flex",
               justifyContent: "flex-end",
-              paddingRight: "40px",
+              paddingRight: "10px",
               width: "100%",
             }}
           >
