@@ -10,7 +10,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import IconButton from "@material-ui/core/IconButton";
-import InfoIcon from "@material-ui/icons/InfoOutlined";
+import InfoIcon from "@material-ui/icons/HelpOutlined";
 import Tooltip from "@material-ui/core/Tooltip";
 import Chip from "@material-ui/core/Chip";
 import Avatar from "@material-ui/core/Avatar";
