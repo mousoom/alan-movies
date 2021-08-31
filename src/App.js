@@ -30,6 +30,7 @@ const App = () => {
   useEffect(() => {
     alanBtn({
       key: alanKey,
+      showOverlayOnMicPermissionPrompt: true,
       onCommand: ({ command, list, number, video }) => {
         if (command === "showMovie") {
           setMovies(list);

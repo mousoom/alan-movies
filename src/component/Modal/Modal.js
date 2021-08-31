@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./modal.css";
 import ReactPlayer from "react-player/youtube";
-import { BiPlus } from "react-icons/bi";
+
 
 const Modal = ({ handleClose, show, movieKey,playing,stopPlaying }) => {
   const [uri, setUri] = useState(null);
