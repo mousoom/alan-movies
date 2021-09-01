@@ -115,8 +115,6 @@ const App = () => {
     setAlanInstance(
       alanBtn({
         key: alanKey,
-        bottom: "30px",
-        right: "30px",
         zIndex: "2000",
         showOverlayOnMicPermissionPrompt: true,
         onCommand: ({ command, list, number, video }) => {
@@ -126,7 +124,6 @@ const App = () => {
             })
           );
         },
-        rootEl: document.getElementById("alan-btn"),
       })
     );
   }, []);
