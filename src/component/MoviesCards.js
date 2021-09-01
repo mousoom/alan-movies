@@ -40,7 +40,6 @@ const MoviesCards = ({ list, activeMovies }) => {
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
 
-
   let view = "";
   if (width > 700) {
     view = "laptop";
@@ -76,101 +75,118 @@ const MoviesCards = ({ list, activeMovies }) => {
     return (
       <div className="main-container">
         <div className="content">
-        <Dialog
-          open={open}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-slide-title"
-          aria-describedby="alert-dialog-slide-description"
-        >
-          <DialogTitle
-            id="alert-dialog-slide-title"
-            style={{ textAlign: "center", fontWeight: "700" }}
+          <Dialog
+            open={open}
+            TransitionComponent={Transition}
+            keepMounted
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-slide-title"
+            aria-describedby="alert-dialog-slide-description"
           >
-            COMMANDS
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-slide-description">
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  flexWrap: "wrap",
-                }}
-              >
-                <Chip
-                  size="medium"
-                  avatar={
-                    <Avatar
-                      style={{ backgroundColor: "#fff", color: "#00ab55" }}
-                    >
-                      W
-                    </Avatar>
-                  }
-                  label="What are the best movies today?"
-                  clickable
+            <DialogTitle
+              id="alert-dialog-slide-title"
+              style={{ textAlign: "center", fontWeight: "700" }}
+            >
+              COMMANDS
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-slide-description">
+                <div
                   style={{
-                    margin: "5px",
-                    backgroundColor: "#00ab55",
-                    color: "#fff",
+                    display: "flex",
+                    justifyContent: "center",
+                    flexWrap: "wrap",
                   }}
-                />
-                <Chip
-                  size="medium"
-                  avatar={
-                    <Avatar
-                      style={{ backgroundColor: "#fff", color: "#7635dc" }}
-                    >
-                      T
-                    </Avatar>
-                  }
-                  label="Tell me about {movie_name}"
-                  clickable
-                  style={{
-                    margin: "5px",
-                    backgroundColor: "#7635dc",
-                    color: "#fff",
-                  }}
-                />
-                <Chip
-                  size="medium"
-                  avatar={
-                    <Avatar
-                      style={{ backgroundColor: "#fff", color: "#1ccaff" }}
-                    >
-                      P
-                    </Avatar>
-                  }
-                  label="Play trailer for {movie_name}"
-                  clickable
-                  style={{
-                    margin: "5px",
-                    backgroundColor: "#1ccaff",
-                    color: "#fff",
-                  }}
-                />
-                <Chip
-                  size="medium"
-                  avatar={
-                    <Avatar
-                      style={{ backgroundColor: "#fff", color: "#fda92d" }}
-                    >
-                      O
-                    </Avatar>
-                  }
-                  label="Open movie number {movie_no.}"
-                  clickable
-                  style={{
-                    margin: "5px",
-                    backgroundColor: "#fda92d",
-                    color: "#fff",
-                  }}
-                />
-              </div>
-            </DialogContentText>
-          </DialogContent>
-        </Dialog>
+                >
+                  <Chip
+                    size="medium"
+                    avatar={
+                      <Avatar
+                        style={{ backgroundColor: "#fff", color: "#00ab55" }}
+                      >
+                        W
+                      </Avatar>
+                    }
+                    label="What are the best movies today?"
+                    clickable
+                    style={{
+                      margin: "5px",
+                      backgroundColor: "#00ab55",
+                      color: "#fff",
+                    }}
+                  />
+                  <Chip
+                    size="medium"
+                    avatar={
+                      <Avatar
+                        style={{ backgroundColor: "#fff", color: "#7635dc" }}
+                      >
+                        T
+                      </Avatar>
+                    }
+                    label="Tell me about {movie_name}"
+                    clickable
+                    style={{
+                      margin: "5px",
+                      backgroundColor: "#7635dc",
+                      color: "#fff",
+                    }}
+                  />
+                  <Chip
+                    size="medium"
+                    avatar={
+                      <Avatar
+                        style={{ backgroundColor: "#fff", color: "#1ccaff" }}
+                      >
+                        P
+                      </Avatar>
+                    }
+                    label="Play trailer for {movie_name}"
+                    clickable
+                    style={{
+                      margin: "5px",
+                      backgroundColor: "#1ccaff",
+                      color: "#fff",
+                    }}
+                  />
+                  <Chip
+                    size="medium"
+                    avatar={
+                      <Avatar
+                        style={{ backgroundColor: "#fff", color: "#fda92d" }}
+                      >
+                        O
+                      </Avatar>
+                    }
+                    label="Open movie number {movie_no.}"
+                    clickable
+                    style={{
+                      margin: "5px",
+                      backgroundColor: "#fda92d",
+                      color: "#fff",
+                    }}
+                  />
+                  <Chip
+                    size="medium"
+                    avatar={
+                      <Avatar
+                        style={{ backgroundColor: "#fff", color: "#FF2442" }}
+                      >
+                        G
+                      </Avatar>
+                    }
+                    label="Go Back"
+                    clickable
+                    style={{
+                      margin: "5px",
+                      backgroundColor: "#FF2442",
+                      color: "#fff",
+                    }}
+                  />
+                </div>
+              </DialogContentText>
+            </DialogContent>
+          </Dialog>
           <div
             style={{
               display: "flex",
@@ -250,7 +266,7 @@ const MoviesCards = ({ list, activeMovies }) => {
       <Grid className="container" container>
         {list.map((list, i) => (
           <Grid item xs={12} sm={6} md={4} lg={3} style={{ display: "flex" }}>
-            <Card list={list} i={i} activeMovies={activeMovies}/>
+            <Card list={list} i={i} activeMovies={activeMovies} />
           </Grid>
         ))}
       </Grid>
