@@ -40,7 +40,6 @@ const MoviesCards = ({ list, activeMovies }) => {
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
 
-  console.log(width);
 
   let view = "";
   if (width > 700) {
@@ -51,7 +50,6 @@ const MoviesCards = ({ list, activeMovies }) => {
     view = "mobile";
   }
 
-  console.log(view);
   function handleResize() {
     if (view === "mobile") {
       setSize("4rem");
