@@ -1,42 +1,43 @@
-<h1 align="center" >ALAN-MOVIES</h1>
+<h1 align="center">ALAN-MOVIES</h1>
 
 LIVE APP - https://alan-movies.vercel.app/ <br/>
-// Firefox is recommended to see the live app on mobile<br/>
 TO KNOW MORE - https://www.youtube.com/watch?v=DghWX45C0-o&t=6s
 
-# Commands:
-**Hi / Hello**<br/>
+# COMMANDS:
 **What are the best movies today? / What are the top movies now?**<br/>
 **Yes / No**<br/>
+**Play trailer for {movie_name}**<br/>
+**Open movie number {movie__serial_number}**<br/>
+**Tell me about {movie_name}**<br/>
 **Go back**<br/>
-
+**Alan Thank You**<br/>
 
 
 
 ## Solution Proposal:
-
-As for a visually impaired person, he/she may not be able to go through his/her mobile to know about news, weather or movie update, etc. Even for the person who doesnt want to type and search of a term, this project is useful. This project may help to start, know the updates, auto scroll , go back and stop just by using their voice commands. The AI used here is to give 'the Top Movies' updates. This AI can even be used for other uses like:
+As for a visually impaired person, he/she may not be able to go through his/her mobile to know about news, weather or movie update, etc. Even for the person who doesnt want to type and search of a term, this project is useful. This project may help to work only by using their voice commands. The AI used here is to get the Top Movies' updates. This AI can even be used for other uses like:
 * Translation, 
 * Search through voice, 
 * Know updates on sports, 
 * Weather,
+* Shopping,
 * News, etc.
 
 ## Problem solved:
-* Auto scroll
-* Go back 
+* Auto scrolling
+* Go back on command
+* Watch Trailer of a Movie
+* Get a movie overview on command
 * Know the updates of Movies.
-* Beautiful UI<br/>
 
-**The start and stop functionality is not applied here, user have to click the alan button to start and stop. By default, the alan button stops automatically after few seconds if the user don't say anything.**
+**The start and stop functionality is not appliecable in web, user have to click the alan button to start and stop. By default, the alan button stops automatically after few seconds if the user don't say anything.**
 
 ## Tech Stack used:
 * React- The framework used.
 * Material-ui - For styling the components, grid, etc.
-* ParticleJs - For get the particle floating background.
-* React-tilt- To get the tilt effect on the landing page.
 * Alan-Ai - The api used for voice assistant and command.
 * TheMoviesDB - The api to get the movie details.
+* Vercel - To host the site
 
 ## To run the project:
 
