@@ -8,14 +8,14 @@ import ReactGA from 'react-ga';
 
 
 
-ReactGA.initialize(process.env.REACT_APP_GA);
+ReactGA.initialize(process.env.Re);
 
 const trackPage = page => {
   ReactGA.set({ page });
   ReactGA.pageview(page);
 };
 
-const alanKey = process.env.REACT_APP_ALAN_KEY;
+const alanKey = "5c0dde699f7be267f2b24fa877066ad02e956eca572e1d8b807a3e2338fdd0dc/stage";
 
 const COMMANDS = {
   SHOW_MOVIE: "showMovie",
