@@ -8,7 +8,7 @@ import ReactGA from 'react-ga';
 
 
 
-ReactGA.initialize(process.env.Re);
+ReactGA.initialize('UA-206689503-1');
 
 const trackPage = page => {
   ReactGA.set({ page });
