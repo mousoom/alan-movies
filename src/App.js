@@ -4,6 +4,11 @@ import alanBtn from "@alan-ai/alan-sdk-web";
 import Moviescard from "./component/MoviesCards";
 import wordsToNumbers from "words-to-numbers";
 import Modal from "./component/Modal/Modal";
+import ReactGA from 'react-ga';
+
+
+
+
 
 const alanKey =
   "5c0dde699f7be267f2b24fa877066ad02e956eca572e1d8b807a3e2338fdd0dc/stage";
@@ -23,6 +28,11 @@ const App = () => {
   const [videoKey, setVideoKey] = useState("");
   const [isOpen, setOpen] = useState(false);
   const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    ReactGA.initialize('UA-206713505-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, [])
 
   const showModal = () => {
     setOpen(true);
@@ -124,6 +134,7 @@ const App = () => {
             })
           );
         },
+
       })
     );
   }, []);
