@@ -10,6 +10,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import IconButton from "@material-ui/core/IconButton";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import InfoIcon from "@material-ui/icons/HelpOutlined";
 import Tooltip from "@material-ui/core/Tooltip";
 import Chip from "@material-ui/core/Chip";
@@ -232,31 +233,27 @@ const MoviesCards = ({ list, activeMovies }) => {
             </span>
           )}
           <div className="brands">
-            <div className="brands1">
-              <img src={Alan} width="70px" alt="" />
+            <div className="brands1" >
+              <IconButton href="https://alan.app/" target="_blank">
+                <img src={Alan} width="50px" alt="" />
+              </IconButton>
             </div>
             <div className="brands1" style={{ marginLeft: "25px" }}>
-              <img
-                src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
-                width="60px"
-                alt=""
-              />
+              <IconButton href="https://developers.themoviedb.org/3" target="_blank">
+                <img
+                  src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
+                  width="50px"
+                  alt=""
+                />
+              </IconButton>
+            </div>
+            <div className="brands1" style={{ marginLeft: "25px" }}>
+              <IconButton href="https://github.com/mousoom/alan-movies" target="_blank">
+                <GitHubIcon style={{ fontSize: "40px",color:'#1ca9fe' }} />
+              </IconButton>
             </div>
           </div>
         </div>
-        {/* <Tilt
-          className={tilt}
-          options={{ max: 25 }}
-          style={{ height: 350, width: 300 }}
-        >
-          <div className={Inner}>
-            <h1 className={title}>ALAN-MOVIE</h1>
-            <h2>Try a Command:</h2>
-            <h3>"What are the best movies today?"</h3>
-            <h2>Or</h2>
-            <h3>"What are the top movies now?"</h3>
-          </div>
-        </Tilt> */}
       </div>
     );
   }
