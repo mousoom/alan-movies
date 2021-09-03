@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useLocation } from 'react-router-dom';
 import "./App.css";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import Moviescard from "./component/MoviesCards";
@@ -35,12 +34,11 @@ const App = () => {
   const [isOpen, setOpen] = useState(false);
   const [playing, setPlaying] = useState(false);
 
-  let location = useLocation();
 
   useEffect(() => {
-    const page = location.pathname;
+    const page = window.location.pathname;
     trackPage(page);
-  }, [location])
+  }, [])
 
   const showModal = () => {
     setOpen(true);
