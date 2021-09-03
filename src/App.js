@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useLocation } from 'react-router-dom';
 import "./App.css";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import Moviescard from "./component/MoviesCards";
@@ -8,7 +9,12 @@ import ReactGA from 'react-ga';
 
 
 
+ReactGA.initialize('UA-206713505-1');
 
+const trackPage = page => {
+  ReactGA.set({ page });
+  ReactGA.pageview(page);
+};
 
 const alanKey =
   "5c0dde699f7be267f2b24fa877066ad02e956eca572e1d8b807a3e2338fdd0dc/stage";
@@ -29,10 +35,12 @@ const App = () => {
   const [isOpen, setOpen] = useState(false);
   const [playing, setPlaying] = useState(false);
 
+  let location = useLocation();
+
   useEffect(() => {
-    ReactGA.initialize('UA-206713505-1');
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }, [])
+    const page = location.pathname;
+    trackPage(page);
+  }, [location])
 
   const showModal = () => {
     setOpen(true);
