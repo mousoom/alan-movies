@@ -1,7 +1,7 @@
 <h1 align="center">ALAN-MOVIES</h1>
 
 LIVE APP - https://alan-movies.vercel.app/ <br/>
-TO KNOW MORE - https://www.youtube.com/watch?v=DghWX45C0-o&t=6s
+TO KNOW MORE - https://www.youtube.com/watch?v=VtN89GsUnR4
 
 # COMMANDS:
 **What are the best movies today? / What are the top movies now?**<br/>
